@@ -1,6 +1,7 @@
 <template>
   <router-view/>
   App vue
+  <h2>Blue Text</h2>
 </template>
 
 <style lang="scss">
@@ -10,5 +11,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $blue-600;
+}
+
+h2 {
+  color: $blue-500;
 }
 </style>
