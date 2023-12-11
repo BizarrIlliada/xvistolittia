@@ -1,5 +1,15 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-createApp(App).use(router).mount('#app')
+import '@/assets/styles/main.scss';
+
+import router from './router';
+
+const app = createApp(App);
+
+import { clickOutside } from './tools/directives';
+app.directive('click-outside', clickOutside);
+
+app
+  .use(router)
+  .mount('#app');
