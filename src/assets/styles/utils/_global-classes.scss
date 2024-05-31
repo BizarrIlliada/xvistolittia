@@ -1,0 +1,15 @@
+.df {
+  display: flex;
+
+  &--col {
+    flex-direction: column;
+  }
+
+  &--jcsb {
+    justify-content: space-between;
+  }
+
+  &--aic {
+    align-items: center;
+  }
+}
