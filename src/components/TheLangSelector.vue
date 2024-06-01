@@ -6,6 +6,9 @@
         :key="language.value"
         @click="onChangeLang(language.value)"
         class="lang-selector__list-item"
+        :class="{
+          'lang-selector__list-item--active': language.value === locale,
+        }"
       >
         {{ language.label }}
       </li>
@@ -21,7 +24,7 @@
     { label: 'UA', value: 'uk' },
   ];
 
-  const { locale } = useI18n();
+  const { locale, t } = useI18n();
 
   function onChangeLang(val: string) {
     locale.value = val;

@@ -2,7 +2,7 @@
   <footer class="app-footer df df--jcc df--aic">
     <a href="https://www.instagram.com/xvistolittia/" target="_blank" class="app-footer__contact df">
       <span class="pi pi-instagram"></span>
-      xvistolittia
+      @xvistolittia
     </a>
 
     <a href="tel:+380 98 020 46 03" class="app-footer__contact df">
@@ -32,7 +32,7 @@
   }
 
   &__contact {
-    gap: 8px;
+    gap: 4px;
   }
 }
 </style>
