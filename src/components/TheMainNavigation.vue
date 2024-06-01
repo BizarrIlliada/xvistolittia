@@ -1,13 +1,13 @@
 <template>
   <nav class="nav">
     <ul class="nav__list df df--aic">
-      <li v-for="link in navLinks" :key="link.label" class="nav-item">
+      <li v-for="link in navLinks" :key="link.to.name" class="nav-item">
         <RouterLink
           :to="link.to"
           class="nav__link"
           active-class="nav__link--active"
         >
-          {{ link.label }}
+          {{ $t(link.label) }}
         </RouterLink>
       </li>
     </ul>
@@ -18,15 +18,15 @@
   const navLinks = [
     {
       to: { name: 'HomePage' },
-      label: 'Home',
+      label: 'shared.home',
     },
     {
       to: { name: 'GalleryPage' },
-      label: 'Gallery',
+      label: 'shared.gallery',
     },
     {
       to: { name: 'AboutPage' },
-      label: 'About Us',
+      label: 'shared.aboutUs',
     },
   ];
 </script>
