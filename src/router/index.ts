@@ -30,6 +30,14 @@ const router = createRouter({
         translationKey: 'aboutUs',
       },
     },
+    // {
+    //   path: '/rules',
+    //   name: 'RulesPage',
+    //   component: () => import('@/pages/AboutPage.vue'),
+    //   meta: {
+    //     translationKey: 'rules',
+    //   },
+    // },
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFoundPage',

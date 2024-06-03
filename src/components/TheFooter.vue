@@ -1,5 +1,10 @@
 <template>
   <footer class="app-footer df df--jcc df--aic">
+    <a href="" target="_blank" class="app-footer__contact df">
+      <span class="pi pi-map-marker"></span>
+      с. Шоломинь, Львівська обл.
+    </a>
+
     <a href="https://www.instagram.com/xvistolittia/" target="_blank" class="app-footer__contact df">
       <span class="pi pi-instagram"></span>
       @xvistolittia

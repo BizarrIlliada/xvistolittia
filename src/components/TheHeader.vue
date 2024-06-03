@@ -10,8 +10,12 @@
         <span class="pi pi-angle-right"></span>
       </h1>
 
-      <img class="app-header__logo" src="../assets/images/XVIStolittiaLogo(1).png" alt="Main Logo"
-        @click="goToHomePage">
+      <img
+        class="app-header__logo"
+        src="../assets/images/XVIStolittiaLogo(1).png"
+        alt="Main Logo"
+        @click="goToHomePage"
+      >
     </div>
 
 

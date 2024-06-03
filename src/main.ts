@@ -10,7 +10,12 @@ import i18n from './i18n';
 const app = createApp(App);
 const pinia = createPinia();
 
+import { globalComponents } from './components/UI';
 import { directives } from './tools/directives';
+
+globalComponents.forEach(component => {
+  app.component(component.name as string, component);
+});
 
 directives.forEach(directive => {
   app.directive(directive.name, directive);
