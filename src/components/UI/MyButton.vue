@@ -14,7 +14,6 @@
   interface Props {
     disabled?: boolean,
     severity?: 'primary' | 'secondary',
-    rounded?: boolean,
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -23,16 +22,11 @@
   });
 
   const myButtonClasses = computed(() => {
-    //TODO: create more button variations
-    const mainClass = 'my-button'
+    const mainClass = 'my-button';
     const classes = [
       mainClass,
       mainClass + `--${props.severity}`,
     ];
-
-    if (props.rounded) {
-      classes.push('my-button--rounded');
-    }
 
     return classes;
   });
@@ -41,22 +35,46 @@
 <style scoped lang="scss">
   .my-button {
     padding: 8px 12px;
-    background-color: $app-secondary;
-    border: none;
-    color: $app-primary;
+    border: 1px solid transparent;
+    transition: .3s;
+    cursor: pointer;
+
     font-size: 14px;
     line-height: 20px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border: 1px solid transparent;
-    transition: .3s;
-    cursor: pointer;
 
-    &:hover {
+    &--primary {
+      color: $app-primary;
+      background-color: $app-secondary;
+
+      &:hover {
+        color: $app-secondary;
+        background-color: $app-primary;
+        border-color: $app-secondary;
+      }
+    }
+
+    &--secondary {
       color: $app-secondary;
-      background-color: $app-primary;
-      border-color: $app-secondary;
+      background-color: transparent;
+
+      &:hover {
+        position: relative;
+        color: $green-primary;
+
+        &::after {
+          content: '';
+          height: 1px;
+          width: 100%;
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          background-color: $green-primary;
+          animation: underline .3s ease;
+        }
+      }
     }
 
     &:active {
@@ -67,9 +85,15 @@
       opacity: 0.6;
       pointer-events: none;
     }
+  }
 
-    &--rounded {
-      border-radius: 10px;
+  @keyframes underline {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: 100%;
     }
   }
 </style>
