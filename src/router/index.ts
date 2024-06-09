@@ -78,7 +78,7 @@ const { t } = i18n.global;
 
 router.beforeEach((to) => {
   //TODO: tab name is not reactive in the case when language switches
-  document.title = t('shared.tabName', { title: t('shared.' + to.meta.translationKey as string) })
+  document.title = t('shared.tabs.tabName', { title: t('shared.tabs.' + to.meta.translationKey as string) });
 });
 
 export default router;

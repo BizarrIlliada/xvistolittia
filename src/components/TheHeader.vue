@@ -24,7 +24,7 @@
   </header>
 
   <div class="app-header-overlay">
-    <Transition name="bar">
+    <Transition name="overlay">
       <div
         v-show="isOverlayOpen"
         v-click-outside="{ isShown: isOverlayOpen, handler: closeOverlay }"
@@ -76,6 +76,7 @@
     z-index: 100;
 
     &__title {
+      // color: $green-900;
       cursor: pointer;
       transition: .3s;
       white-space: nowrap;
@@ -126,13 +127,13 @@
     }
   }
 
-  .bar-enter-active,
-  .bar-leave-active {
+  .overlay-enter-active,
+  .overlay-leave-active {
     transition: transform .3s ease;
   }
 
-  .bar-enter-from,
-  .bar-leave-to {
+  .overlay-enter-from,
+  .overlay-leave-to {
     transform: translateY(0);
   }
 </style>

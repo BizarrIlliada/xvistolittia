@@ -18,15 +18,15 @@
   const navLinks = [
     {
       to: { name: 'HomePage' },
-      label: 'shared.home',
+      label: 'shared.tabs.home',
     },
     {
       to: { name: 'GalleryPage' },
-      label: 'shared.gallery',
+      label: 'shared.tabs.gallery',
     },
     {
       to: { name: 'AboutPage' },
-      label: 'shared.aboutUs',
+      label: 'shared.tabs.aboutUs',
     },
   ];
 </script>

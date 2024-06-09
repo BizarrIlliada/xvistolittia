@@ -1,13 +1,19 @@
 <template>
   <div class="my-input">
-    <label for="" class="my-input__label"></label>
     <input
+      :id="id"
       :type="type"
       :placeholder="placeholder"
       :class="inputClasses"
       :value="modelValue"
       @input="onInput"
     >
+
+    <Transition name="error">
+      <small v-if="invalid && errorMessage" class="my-input__error">
+        {{ errorMessage }}
+      </small>
+    </Transition>
   </div>
 </template>
 
@@ -26,6 +32,7 @@
     type?: 'text' | 'password' | 'number',
     placeholder?: string,
     invalid?: boolean,
+    errorMessage?: string,
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -33,8 +40,10 @@
     type: 'text',
     placeholder: '',
     invalid: false,
+    errorMessage: '',
   });
 
+  // TODO: add eye visibility switcher
   const isPasswordVisible = ref(false);
 
   const inputClasses = computed(() => {
@@ -57,6 +66,7 @@
 
 <style scoped lang="scss">
   .my-input {
+    position: relative;
 
     &__input {
       height: 36px;
@@ -92,9 +102,31 @@
         }
 
         &::placeholder {
-          color: $red-400;
+          color: $red-600;
         }
       }
     }
+
+    &__error {
+      position: absolute;
+      left: 0;
+      bottom: -20px;
+      transform: translateY(0);
+      opacity: 1;
+      color: $red-600;
+      font-size: 13px;
+      line-height: 18px;
+    }
+  }
+
+  .error-enter-active,
+  .error-leave-active {
+    transition: .3s ease;
+  }
+
+  .error-enter-from,
+  .error-leave-to {
+    transform: translateY(-30%);
+    opacity: 0;
   }
 </style>
