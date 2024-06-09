@@ -1,10 +1,11 @@
 <template>
+  <!-- TODO: change header and overlay relations) -->
   <header class="app-header df df--aic">
     <div class="app-header__container container df df--aic df--jcsb">
       <h1
         class="app-header__title"
-        :class="{ 'app-header__title--with-nav': isNavigationOpen }"
-        @click.stop="showNavigation"
+        :class="{ 'app-header__title--with-overlay': isOverlayOpen }"
+        @click.stop="showOverlay"
       >
         XVIStolittia
         <span class="pi pi-angle-right"></span>
@@ -20,21 +21,22 @@
         >
       </picture>
     </div>
+  </header>
 
-
+  <div class="app-header-overlay">
     <Transition name="bar">
       <div
-        v-show="isNavigationOpen"
-        v-click-outside="{ isShown: isNavigationOpen, handler: closeNavigation }"
-        class="app-header__bar"
+        v-show="isOverlayOpen"
+        v-click-outside="{ isShown: isOverlayOpen, handler: closeOverlay }"
+        class="app-header-overlay__body"
       >
-        <div class="app-header__bar-content container df df--jcsb">
+        <div class="app-header-overlay__content container df df--jcsb">
           <TheMainNavigation />
           <TheLangSelector />
         </div>
       </div>
       </Transition>
-  </header>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -50,29 +52,28 @@
     router.push({ name: 'HomePage' });
   }
 
-  const isNavigationOpen = ref(false);
+  const isOverlayOpen = ref(false);
 
-  function showNavigation() {
-    isNavigationOpen.value = !isNavigationOpen.value;
+  function showOverlay() {
+    isOverlayOpen.value = !isOverlayOpen.value;
   }
 
-  function closeNavigation() {
-    isNavigationOpen.value = false;
+  function closeOverlay() {
+    isOverlayOpen.value = false;
   }
 
   router.afterEach((from, to) => {
-    if (from.name !== to.name && isNavigationOpen.value !== false) {
-      isNavigationOpen.value = false;
+    if (from.name !== to.name && isOverlayOpen.value !== false) {
+      isOverlayOpen.value = false;
     }
   });
 </script>
 
 <style scoped lang="scss">
   .app-header {
-    position: relative;
     height: 128px;
     background-color: $app-primary;
-    transform-style: preserve-3d;
+    z-index: 100;
 
     &__title {
       cursor: pointer;
@@ -81,7 +82,7 @@
       user-select: none;
 
       &:hover,
-      &--with-nav {
+      &--with-overlay {
         color: $orange-primary;
         text-shadow: 2px 2px 2px white;
       }
@@ -91,7 +92,7 @@
         transition: transform .3s ease;
       }
 
-      &--with-nav {
+      &--with-overlay {
         span {
           transform: rotate(90deg);
           text-shadow: 2px 0px 2px white;
@@ -103,17 +104,22 @@
       height: 100px;
       cursor: pointer;
     }
+  }
 
-    &__bar {
+  .app-header-overlay {
+    position: relative;
+    z-index: 99;
+
+    &__body {
       position: absolute;
       left: 0;
       right: 0;
       bottom: 0;
-      transform: translate3d(0, 100%, -1px);
+      transform: translateY(100%);
       background-color: $green-primary;
     }
 
-    &__bar-content {
+    &__content {
       @include phone {
         flex-flow: row-reverse;
       }
@@ -127,6 +133,6 @@
 
   .bar-enter-from,
   .bar-leave-to {
-    transform: translate3d(0, 0, -1px);
+    transform: translateY(0);
   }
 </style>
