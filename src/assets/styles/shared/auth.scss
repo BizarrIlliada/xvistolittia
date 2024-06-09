@@ -1,0 +1,66 @@
+.auth {
+  position: relative;
+  width: 400px;
+  z-index: 0;
+
+  @include phone {
+    width: 320px;
+  }
+
+  &__side-tag {
+    position: absolute;
+    left: -140px;
+    top: 75px;
+    transform: rotateZ(-90deg);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    div {
+      width: 90px;
+      height: 1px;
+      background-color: $green-primary;
+    }
+
+    span {
+      color: $green-primary;
+      font-size: 14px;
+      line-height: 18.2px;
+    }
+
+    @include phone {
+      display: none;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 40px;
+    color: $green-900;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  &__message {
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+
+  &__form {
+    // border: 1px solid $surface-400;
+    // padding: 24px 12px;
+  }
+
+  &__input {
+    margin-bottom: 24px;
+
+    &--last {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__button {
+    width: 70%;
+  }
+}

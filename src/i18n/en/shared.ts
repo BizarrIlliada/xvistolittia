@@ -4,4 +4,5 @@ export default {
   gallery: 'Gallery',
   aboutUs: 'About Us',
   notFound: 'Not Found',
+  auth: 'Authorization',
 }

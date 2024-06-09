@@ -1,1 +1,1 @@
-export { fireStorage, fireStore } from './firebase';
+export { fireStorage, fireStore, fireAuth } from './firebase';

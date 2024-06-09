@@ -8,7 +8,6 @@
   justify-content: space-between;
   min-height: 100%;
   color: $app-secondary;
-  background-color: $app-primary;
 }
 
 .container {
@@ -44,7 +43,26 @@ html, body {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: $app-primary;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+h3, p, span {
+  font-size: 16px;
+  line-height: 20px;
 }

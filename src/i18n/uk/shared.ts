@@ -4,4 +4,5 @@ export default {
   gallery: 'Галерея',
   aboutUs: 'Про нас',
   notFound: 'Ой, здається ви заблукали...',
+  auth: 'Авторизація',
 }

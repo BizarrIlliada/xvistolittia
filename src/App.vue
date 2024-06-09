@@ -11,14 +11,15 @@
 </template>
 
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
+  import { RouterView } from 'vue-router';
 
-import TheHeader from '@/components/TheHeader.vue';
-import TheFooter from '@/components/TheFooter.vue';
+  import TheHeader from '@/components/TheHeader.vue';
+  import TheFooter from '@/components/TheFooter.vue';
 </script>
 
 <style scoped lang="scss">
-.app-main {
-  flex-grow: 1;
-}
+  .app-main {
+    display: flex;
+    flex-grow: 1;
+  }
 </style>

@@ -39,6 +39,31 @@ const router = createRouter({
     //   },
     // },
     {
+      path: '/auth',
+      name: 'AuthPage',
+      component: () => import('@/pages/auth/AuthPage.vue'),
+      meta: {
+        translationKey: 'auth',
+      },
+      redirect: { name: 'Login' },
+      children: [
+        {
+          path: 'login',
+          name: 'Login',
+          component: () => import('@/pages/auth/LoginComponent.vue'),
+        },
+      ],
+    },
+    // {
+    //   path: 'upload-photo',
+    //   name: 'UploadPhotoPage',
+    //   component: ,
+    //   meta: {
+    //     translationKey ,
+    //     requiredAuth: true,
+    //   }
+    // },
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFoundPage',
       component: () => import('@/pages/NotFoundPage.vue'),
