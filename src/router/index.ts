@@ -54,15 +54,6 @@ const router = createRouter({
         },
       ],
     },
-    // {
-    //   path: 'upload-photo',
-    //   name: 'UploadPhotoPage',
-    //   component: ,
-    //   meta: {
-    //     translationKey ,
-    //     requiredAuth: true,
-    //   }
-    // },
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFoundPage',
@@ -76,7 +67,7 @@ const router = createRouter({
 
 const { t } = i18n.global;
 
-router.beforeEach((to) => {
+router.beforeEach(async (to, from) => {
   //TODO: tab name is not reactive in the case when language switches
   document.title = t('shared.tabs.tabName', { title: t('shared.tabs.' + to.meta.translationKey as string) });
 });

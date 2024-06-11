@@ -1,4 +1,5 @@
 export default {
+  logout: 'Logout',
   tabs: {
     tabName: "{title} {'|'} XVIStolittia",
     home: 'Home',

@@ -8,7 +8,7 @@
     </p>
 
     <form class="auth__form" @submit="onSubmit">
-      <!-- TODO:  -->
+      <!-- TODO: remove rounded angels on inputs (IPhone), refactor translations -->
       <MyInput
         id="login-email-input"
         :placeholder="$t('authPage.email')"
@@ -40,9 +40,14 @@
 </template>
 
 <script setup lang="ts">
+  import { useRouter } from 'vue-router';
+  import { useAuthStore } from '@/stores/authStore';
   // import { ref } from 'vue';
   import { defineRule, useForm, useField } from 'vee-validate';
   import { useValidationRules } from '@/tools/hooks/validation-rules';
+
+  const router = useRouter();
+  const authStore = useAuthStore();
 
   const { requiredRule, emailRule } = useValidationRules();
 
@@ -56,7 +61,12 @@
   const { value: password } = useField('password', 'required');
 
   const onSubmit = handleSubmit(async (values) => {
-    console.log('Values: ', values);
+    try {
+      await authStore.login(values.email, values.password);
+      router.push({ name: 'HomePage' });
+    } catch (error) {
+      resetForm();
+    }
   });
 </script>
 

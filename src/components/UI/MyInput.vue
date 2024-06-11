@@ -2,12 +2,22 @@
   <div class="my-input">
     <input
       :id="id"
-      :type="type"
+      :type="inputType"
       :placeholder="placeholder"
       :class="inputClasses"
       :value="modelValue"
       @input="onInput"
     >
+
+    <div v-if="type === 'password'" class="my-input__eye-container" @click="togglePasswordVisibility">
+      <i
+        class="pi"
+        :class="{
+          'pi-eye': !isPasswordVisible,
+          'pi-eye-slash': isPasswordVisible,
+        }"
+      ></i>
+    </div>
 
     <Transition name="error">
       <small v-if="invalid && errorMessage" class="my-input__error">
@@ -43,9 +53,6 @@
     errorMessage: '',
   });
 
-  // TODO: add eye visibility switcher
-  const isPasswordVisible = ref(false);
-
   const inputClasses = computed(() => {
     const mainClass = 'my-input__input'
     const classes = [mainClass];
@@ -54,8 +61,26 @@
       classes.push(mainClass + '--invalid');
     }
 
+    if (props.type === 'password') {
+      classes.push(mainClass + '--password');
+    }
+
     return classes;
 });
+
+  const isPasswordVisible = ref(false);
+
+  const inputType = computed(() => {
+    if (props.type === 'password') {
+      return isPasswordVisible.value ? 'text' : 'password';
+    }
+
+    return props.type;
+  });
+
+  function togglePasswordVisibility() {
+    isPasswordVisible.value = !isPasswordVisible.value;
+  }
 
   function onInput(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -75,6 +100,8 @@
       background-color: transparent;
       border: none;
       border-bottom: 1px solid $surface-400;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
       outline: none;
       color: $green-900;
       font-size: 16px;
@@ -105,6 +132,19 @@
           color: $red-600;
         }
       }
+
+      &--password {
+        padding-right: 32px;
+      }
+    }
+
+    &__eye-container {
+      position: absolute;
+      right: 8px;
+      display: inline-block;
+      transform: translateY(50%);
+      cursor: pointer;
+      color: $green-900;
     }
 
     &__error {

@@ -1,13 +1,15 @@
-import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import { defineStore } from 'pinia';
 import { fireAuth } from '@/firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from 'firebase/auth';
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null);
 
-  function initAuth() {
+  async function initAuth() {
     onAuthStateChanged(fireAuth, (currentUser) => {
+      console.log('Current User: ', currentUser);
+
       user.value = currentUser;
     });
   }
@@ -18,7 +20,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = usersCredentials.user;
     } catch (error) {
       //TODO: add alert
-      console.log('Login Error: ', error);
+      return Promise.reject(error);
     }
   }
 
@@ -28,9 +30,9 @@ export const useAuthStore = defineStore('auth', () => {
       user.value === null;
     } catch (error) {
       //TODO: add alert
-      console.log('Logout Error: ', error);
+      return Promise.reject(error);
     }
   }
 
-  return { user, initAuth, login, logout }
+  return { user, initAuth, login, logout };
 });
