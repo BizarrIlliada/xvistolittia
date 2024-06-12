@@ -1,5 +1,6 @@
 export default {
   logout: 'Logout',
+  uploadYourPhoto: 'Upload your photo',
   tabs: {
     tabName: "{title} {'|'} XVIStolittia",
     home: 'Home',

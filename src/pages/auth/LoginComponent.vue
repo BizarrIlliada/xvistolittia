@@ -8,7 +8,6 @@
     </p>
 
     <form class="auth__form" @submit="onSubmit">
-      <!-- TODO: remove rounded angels on inputs (IPhone), refactor translations -->
       <MyInput
         id="login-email-input"
         :placeholder="$t('authPage.email')"

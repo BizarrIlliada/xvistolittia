@@ -1,35 +1,102 @@
 <template>
-  <div>
-    <input type="file" @change="uploadPhoto" />
+  <div class="photo-input df df--col df--aic">
+    <div class="photo-input__body df df--aic df--jcc" @click="uploadPhotoInput?.click()">
+      <i
+        class="pi photo-input__icon"
+        :class="{
+          'pi-upload': !isUploading,
+          'pi-spinner-dotted': isUploading,
+          'photo-input__icon--loader': isUploading,
+        }"
+      ></i>
+      <input
+        id="upload-photo-input"
+        type="file"
+        accept="image/*"
+        class="photo-input__input"
+        ref="uploadPhotoInput"
+        @change.prevent="handleUploadPhoto"
+      />
+    </div>
+
+    <label for="upload-photo-input" class="photo-input__label">
+      {{ $t('shared.uploadYourPhoto') }}
+    </label>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
-  import { collection, addDoc } from "firebase/firestore";
-  import { fireStorage, fireStore } from '@/firebase';
+  import { ref } from 'vue';
 
-  const uploadPhoto = async (event: Event) => {
+  import { uploadPhoto } from '@/api/photos.api';
+
+  import { type TPhotoCategory } from '@/types';
+
+  interface Props {
+    collectionName?: TPhotoCategory;
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    collectionName: 'general',
+  });
+
+  const emits = defineEmits(['onPhotoAdded']);
+
+  const isUploading = ref(false);
+  const uploadPhotoInput = ref<HTMLInputElement | null>(null);
+
+  async function handleUploadPhoto(event: Event) {
     const target = event.target as HTMLInputElement;
-    const file = target.files?.[0];
-    if (!file) return;
+    const photo = target.files?.[0];
+    if (!photo) {
+      return;
+    }
+
+    isUploading.value = true;
 
     try {
-      const storageReference = storageRef(fireStorage, `photos/${file.name}`);
-      await uploadBytes(storageReference, file);
-      const url = await getDownloadURL(storageReference);
-
-      console.log(fireStore);
-
-      const docRef = await addDoc(collection(fireStore, 'photos'), {
-        url: url,
-        name: file.name,
-        createdAt: new Date(),
-      });
-
-      console.log("Document written with ID: ", docRef.id);
+      await uploadPhoto(photo, props.collectionName);
+      emits('onPhotoAdded');
     } catch (error) {
+      //TODO: add alert
       console.log('Error', error);
+    } finally {
+      isUploading.value = false;
     }
-};
+  }
 </script>
+
+<style scoped lang="scss">
+  @import '@/assets/styles/utils/_animations.scss';
+
+  .photo-input {
+    gap: 24px;
+    width: min-content;
+    white-space: nowrap;
+
+    &__body {
+      height: 80px;
+      width: 80px;
+      border: 2px dashed $green-900;
+      cursor: pointer;
+    }
+
+    &__icon {
+      color: $green-900;
+      font-size: 24px;
+
+      &--loader {
+        animation: rotating 1s ease infinite;
+      }
+    }
+
+    &__label {
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    &__input {
+      display: none;
+    }
+  }
+</style>

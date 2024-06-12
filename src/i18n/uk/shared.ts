@@ -1,5 +1,6 @@
 export default {
   logout: 'Вийти',
+  uploadYourPhoto: 'Завантажте фото',
   tabs: {
     tabName: "{title} {'|'} XVIStolittia",
     home: 'Головна',
