@@ -8,8 +8,6 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function initAuth() {
     onAuthStateChanged(fireAuth, (currentUser) => {
-      console.log('Current User: ', currentUser);
-
       user.value = currentUser;
     });
   }

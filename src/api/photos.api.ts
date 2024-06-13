@@ -15,7 +15,7 @@ export async function fetchPhotosByCategory(categoryName: TPhotoCategory): Promi
 
     return querySnapshot.docs.map(doc => ({
       ...doc.data(),
-      createdAt: doc.data().createdAt.toDate()
+      createdAt: doc.data().createdAt.toDate(),
     })) as IPhoto[];
   } catch (error) {
     return Promise.reject(error)

@@ -1,6 +1,10 @@
 <template>
   <div class="gallery">
-    <PhotoInputComponent v-if="authStore.user" @onPhotoAdded="loadPhotos('general')"></PhotoInputComponent>
+    <PhotoInputComponent
+      v-if="authStore.user"
+      :collectionName="'home'"
+      @onPhotoAdded="loadPhotos('general')"
+    ></PhotoInputComponent>
     <div class="gallery" v-if="photos?.length">
       <img v-for="photo in photos" :key="photo.url" :src="photo.url" :alt="photo.name">
     </div>
@@ -27,8 +31,6 @@
   async function loadPhotos(categoryName: TPhotoCategory) {
     try {
       photos.value = await fetchPhotosByCategory(categoryName);
-
-      console.log(photos.value);
     } catch (error) {
       //TODO: add alert
       console.log(error);
