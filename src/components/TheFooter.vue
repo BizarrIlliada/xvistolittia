@@ -1,6 +1,6 @@
 <template>
   <footer class="app-footer df df--jcc df--aic">
-    <a href="" target="_blank" class="app-footer__contact df">
+    <a href="https://www.google.com/maps?ll=49.728063,24.191313&z=13&t=m&hl=en&gl=US&mapclient=embed&cid=14010505202342261655" target="_blank" class="app-footer__contact df">
       <span class="pi pi-map-marker"></span>
       с. Шоломинь, Львівська обл.
     </a>
@@ -29,7 +29,7 @@
   background-color: $green-primary;
   color: $app-primary;
 
-  @include phone {
+  @include tablet {
     flex-direction: column;
     height: min-content;
     padding-top: 20px;

@@ -1,2 +1,2 @@
 # xvistolittia
-Link: [xvistolittia.fun/](https://xvistolittia.fun/)
+Link: [xvistolittia.fun](https://xvistolittia.fun/)
