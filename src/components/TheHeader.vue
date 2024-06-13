@@ -1,41 +1,40 @@
 <template>
-  <!-- TODO: change header and overlay relations) -->
-  <header class="app-header df df--aic">
-    <div class="app-header__container container df df--aic df--jcsb">
-      <h1
-        class="app-header__title"
-        :class="{ 'app-header__title--with-overlay': isOverlayOpen }"
-        @click.stop="showOverlay"
-      >
-        XVIStolittia
-        <span class="pi pi-angle-right"></span>
-      </h1>
-
-      <picture>
-        <source srcset="../assets/images/XVIStolittiaLogo(1).webp" type="image/webp">
-        <img
-          class="app-header__logo"
-          src="../assets/images/XVIStolittiaLogo(1).png"
-          alt="Main Logo"
-          @click="goToHomePage"
+  <div class="app-header-wrapper">
+    <header class="app-header df df--aic">
+      <div class="app-header__container container df df--aic df--jcsb">
+        <h1
+          class="app-header__title"
+          :class="{ 'app-header__title--with-overlay': isOverlayOpen }"
+          @click.stop="showOverlay"
         >
-      </picture>
-    </div>
-  </header>
+          XVIStolittia
+          <span class="pi pi-angle-right"></span>
+        </h1>
+  
+        <picture>
+          <source srcset="../assets/images/XVIStolittiaLogo(1).webp" type="image/webp">
+          <img
+            class="app-header__logo"
+            src="../assets/images/XVIStolittiaLogo(1).png"
+            alt="Main Logo"
+            @click="goToHomePage"
+          >
+        </picture>
+      </div>
+    </header>
 
-  <div class="app-header-overlay">
     <Transition name="overlay">
       <div
         v-show="isOverlayOpen"
         v-click-outside="{ isShown: isOverlayOpen, handler: closeOverlay }"
-        class="app-header-overlay__body"
+        class="app-header-overlay"
       >
         <div class="app-header-overlay__content container df df--jcsb">
           <TheMainNavigation />
           <TheLangSelector />
         </div>
       </div>
-      </Transition>
+    </Transition>
   </div>
 </template>
 
@@ -70,7 +69,16 @@
 </script>
 
 <style scoped lang="scss">
+  .app-header-wrapper {
+    height: 128px;
+  }
+
   .app-header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    box-shadow: #0000001A 0px 2px 4px -1px;
     height: 128px;
     background-color: $app-primary;
     z-index: 100;
@@ -113,17 +121,13 @@
   }
 
   .app-header-overlay {
-    position: relative;
     z-index: 99;
-
-    &__body {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      transform: translateY(100%);
-      background-color: $green-primary;
-    }
+    position: fixed;
+    top: 128px;
+    left: 0;
+    right: 0;
+    background-color: $green-primary;
+    box-shadow: #32325D40 0px 15px 30px -12px inset, #0000004D 0px 9px 18px -9px inset;
 
     &__content {
       @include phone {
@@ -139,6 +143,6 @@
 
   .overlay-enter-from,
   .overlay-leave-to {
-    transform: translateY(0);
+    transform: translateY(-100%);
   }
 </style>
