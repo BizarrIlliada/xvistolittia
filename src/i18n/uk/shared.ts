@@ -1,6 +1,8 @@
 export default {
   logout: 'Вийти',
   uploadYourPhoto: 'Завантажте фото',
+  sholomyn: 'с. Шоломинь, Львівська обл.',
+
   tabs: {
     tabName: "{title} {'|'} XVIStolittia",
     home: 'Головна',
