@@ -28,6 +28,7 @@
   gap: 16px;
   background-color: $green-primary;
   color: $app-primary;
+  box-shadow: #32325D40 0px 8px 15px -12px inset, #0000004D 0px 5px 9px -5px inset;
 
   @include tablet {
     flex-direction: column;
