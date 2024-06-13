@@ -104,6 +104,11 @@
     &__logo {
       height: 100px;
       cursor: pointer;
+      transition: transform .2s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 

@@ -31,5 +31,18 @@
   .app-main {
     display: flex;
     flex-grow: 1;
+    padding: 32px 0;
+
+    @include desktop {
+      padding: 26px 0;
+    }
+
+    @include tablet {
+      padding: 20px 0;
+    }
+
+    @include phone {
+      padding: 16px 0;
+    }
   }
 </style>

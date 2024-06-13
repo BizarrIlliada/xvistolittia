@@ -57,12 +57,27 @@
     }
 
     &--secondary {
+      position: relative;
       color: $app-secondary;
       background-color: transparent;
 
+      &::before {
+        content: '';
+        height: 100%;
+        width: 1px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: $app-secondary;
+        transition: background-color .3s;
+      }
+
       &:hover {
-        position: relative;
         color: $green-primary;
+
+        &::before {
+          background-color: $green-primary;
+        }
 
         &::after {
           content: '';
