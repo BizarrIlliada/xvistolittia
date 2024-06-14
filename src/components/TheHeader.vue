@@ -70,6 +70,7 @@
 
 <style scoped lang="scss">
   .app-header-wrapper {
+    position: relative;
     height: 128px;
   }
 
@@ -82,6 +83,10 @@
     height: 128px;
     background-color: $app-primary;
     z-index: 100;
+
+    @include tablet {
+      position: relative;
+    }
 
     &__title {
       // color: $green-900;
@@ -128,6 +133,10 @@
     right: 0;
     background-color: $green-primary;
     box-shadow: #32325D40 0px 15px 30px -12px inset, #0000004D 0px 9px 18px -9px inset;
+
+    @include tablet {
+      position: absolute;
+    }
 
     &__content {
       @include phone {

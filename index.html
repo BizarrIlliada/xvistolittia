@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <title>XVIStolittia</title>
+    <style>
+      #pre-loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: #E4DFD3;
+        z-index: 9999;
+      }
+
+      .spinner {
+        border: 8px solid #0E4F2626;
+        border-left-color: #0E4F26;
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        animation: spin .5s alternate-reverse infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(400deg);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="pre-loader">
+      <div class="spinner"></div>
+    </div>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
