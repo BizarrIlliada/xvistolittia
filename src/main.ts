@@ -26,3 +26,14 @@ app
   .use(router)
   .use(i18n)
   .mount('#app');
+
+  const removeLoader = () => {
+    const loader = document.getElementById('pre-loader');
+    if (loader) {
+      loader.remove();
+    }
+  
+    window.removeEventListener('load', removeLoader);
+  };
+  
+  window.addEventListener('load', removeLoader);
