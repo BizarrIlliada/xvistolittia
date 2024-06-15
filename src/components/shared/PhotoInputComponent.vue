@@ -15,6 +15,7 @@
         accept="image/*"
         class="photo-input__input"
         ref="uploadPhotoInput"
+        :disabled="isUploading"
         @change.prevent="handleUploadPhoto"
       />
     </div>

@@ -57,7 +57,9 @@
         <p class="home-page__text home-page__text--last">Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
 
         <RouterLink :to="{ name: 'GalleryPage' }">
-          <MyButton severity="secondary">Go to adventures</MyButton>
+          <MyButton severity="secondary">
+            {{ $t('homePage.goToAdventure') }}
+          </MyButton>
         </RouterLink>
       </PhotoContentBlockComponent>
     </div>

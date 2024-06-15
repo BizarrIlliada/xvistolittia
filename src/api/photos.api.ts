@@ -4,6 +4,8 @@ import { fireStore, fireStorage } from '@/firebase';
 
 import { type IPhoto, type TPhotoCategory } from '@/types';
 
+//TODO: add cashing
+
 export async function fetchPhotosByCategory(categoryName: TPhotoCategory): Promise<IPhoto[]> {
   try {
     const q = query(
