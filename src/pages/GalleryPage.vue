@@ -87,6 +87,6 @@
   }
 
   img {
-    height: 250px;
+    width: 100%;
   }
 </style>
