@@ -119,6 +119,10 @@
       cursor: pointer;
       transition: transform .2s;
 
+      @include tablet {
+        height: 80px;
+      }
+
       &:hover {
         transform: scale(1.05);
       }

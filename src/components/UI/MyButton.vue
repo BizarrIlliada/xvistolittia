@@ -33,6 +33,8 @@
 </script>
 
 <style scoped lang="scss">
+  @import '@/assets/styles/utils/_animations.scss';
+
   .my-button {
     padding: 8px 12px;
     border: 1px solid transparent;
@@ -99,16 +101,6 @@
     &:disabled, &:disabled:hover {
       opacity: 0.6;
       pointer-events: none;
-    }
-  }
-
-  @keyframes underline {
-    from {
-      width: 0%;
-    }
-
-    to {
-      width: 100%;
     }
   }
 </style>

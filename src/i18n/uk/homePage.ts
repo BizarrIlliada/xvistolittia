@@ -2,5 +2,5 @@ export default {
   title: 'Родинне угіддя - кінна ферма',
   gladToSeeYou: 'Ми завжди раді вас бачити!',
   moreAboutUs: 'Дізнатися більше',
-  goToAdventures: 'До пригод',
+  goToAdventure: 'Розпочати пригоду',
 }
