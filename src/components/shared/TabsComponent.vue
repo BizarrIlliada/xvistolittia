@@ -1,6 +1,6 @@
 <template>
   <div class="tabs df df--col">
-    <nav class="tabs__tabs">
+    <nav class="tabs__tabs hide-scrollbar">
       <ul class="tabs__tabs-list df">
         <li
           v-for="tab in tabs"

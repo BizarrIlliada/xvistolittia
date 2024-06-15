@@ -21,3 +21,22 @@
     align-items: start;
   }
 }
+
+.hide-scrollbar {
+  overflow: auto;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+@supports (-ms-overflow-style: none) {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+  }
+}
