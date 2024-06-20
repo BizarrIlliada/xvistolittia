@@ -1,9 +1,8 @@
 <template>
   <div class="home-page df df--col df--aic">
-    <div v-if="photos" class="home-page__blocks-container df df--col">
+    <div class="home-page__blocks-container df df--col">
       <PhotoContentBlockComponent
-        v-if="photos[0]"
-        :photo="photos[0]"
+        :photo="photos ? photos[0] : null"
       >
         <h2 class="home-page__title">
           {{ $t('homePage.title') }}
@@ -19,8 +18,7 @@
       </PhotoContentBlockComponent>
 
       <PhotoContentBlockComponent
-        v-if="photos[1]"
-        :photo="photos[1]"
+        :photo="photos ? photos[1] : null"
         reversed
       >
         <h3 class="home-page__subtitle">
@@ -39,8 +37,7 @@
       </PhotoContentBlockComponent>
 
       <PhotoContentBlockComponent
-        v-if="photos[2]"
-        :photo="photos[2]"
+        :photo="photos ? photos[2] : null"
       >
         <h3 class="home-page__subtitle">
           Lorem ipsum!
