@@ -6,7 +6,7 @@
 
     <div class="photo-content-block__photo-container">
       <img v-if="photo" :src="photo.url" :alt="photo.name" loading="lazy" class="photo-content-block__photo" @load="hideLoader" @error="hideLoader">
-      <MyLoader v-if="!isPhotoLoaded"></MyLoader>
+      <MyLoader v-if="!isPhotoLoaded" class="photo-content-block__loader"></MyLoader>
     </div>
   </div>
 </template>
@@ -64,8 +64,10 @@
     }
 
     &__photo-container {
+      position: relative;
       flex-grow: 1;
       min-height: 150px;
+      width: 100%;
       box-shadow: $app-shadow;
     }
 
@@ -73,6 +75,14 @@
       display: block;
       width: 100%;
       object-fit: cover;
+    }
+
+    &__loader {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
     }
   }
 </style>
