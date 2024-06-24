@@ -29,9 +29,11 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
-  import { uploadPhoto } from '@/api/photos.api';
+  import { usePhotosApi } from '@/api/photos.api';
 
   import { type TPhotoCategory } from '@/types';
+
+  const { uploadPhoto } = usePhotosApi();
 
   interface Props {
     collectionName?: TPhotoCategory;
