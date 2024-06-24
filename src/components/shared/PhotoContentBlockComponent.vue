@@ -66,9 +66,13 @@
     &__photo-container {
       position: relative;
       flex-grow: 1;
-      min-height: 150px;
+      min-height: 400px;
       width: 100%;
       box-shadow: $app-shadow;
+
+      @include tablet {
+        min-height: 200px;
+      }
     }
 
     &__photo {

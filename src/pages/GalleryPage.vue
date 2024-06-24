@@ -26,9 +26,10 @@
 
   import { useAuthStore } from '@/stores/authStore';
 
-  import { fetchPhotosByCategory } from '@/api/photos.api';
+  import { usePhotosApi } from '@/api/photos.api';
 
   const authStore = useAuthStore();
+  const { fetchPhotosByCategory } = usePhotosApi();
 
   const tabs = [
     'Camp',

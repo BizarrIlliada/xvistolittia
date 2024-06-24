@@ -68,9 +68,11 @@
 
   import PhotoContentBlockComponent from '@/components/shared/PhotoContentBlockComponent.vue';
 
-  import { fetchPhotosByCategory } from '@/api/photos.api';
+  import { usePhotosApi } from '@/api/photos.api';
 
   import type { IPhoto } from '@/types';
+
+  const { fetchPhotosByCategory } = usePhotosApi();
 
   const photos = ref<IPhoto[] | null>(null);
 
@@ -96,7 +98,6 @@
       gap: 120px;
 
       @include tablet {
-        // text-align: center;
         gap: 50px;
       }
     }
