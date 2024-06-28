@@ -1,5 +1,7 @@
 <template>
   <section class="auth">
+    <MySideTag text="welcome" class="auth__side-tag"></MySideTag>
+
     <h2 class="auth__title">
       {{ $t('authPage.login') }}
     </h2>
@@ -30,11 +32,6 @@
         {{ $t('authPage.login') }}
       </MyButton>
     </form>
-
-    <div class="auth__side-tag">
-      <div></div>
-      <span>welcome</span>
-    </div>
   </section>
 </template>
 

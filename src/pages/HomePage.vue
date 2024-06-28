@@ -1,64 +1,69 @@
 <template>
   <div class="home-page df df--col df--aic">
-    <div class="home-page__blocks-container df df--col">
-      <PhotoContentBlockComponent
-        :photo="photos ? photos[0] : null"
-      >
-        <h2 class="home-page__title">
+    <!-- FIRST BLOCK -->
+    <div class="home-page__block df df-jcsb">
+      <div class="home-page__block-content">
+        <h2 class="home-page__block-title">
           {{ $t('homePage.title') }}
         </h2>
 
-        <p class="home-page__text home-page__text--last">
+        <p class="home-page__block-text home-page__block-text--last">
           {{ $t('homePage.gladToSeeYou') }}
         </p>
 
         <RouterLink :to="{ name: 'AboutPage' }">
           <MyButton>{{ $t('homePage.moreAboutUs') }}</MyButton>
         </RouterLink>
-      </PhotoContentBlockComponent>
+      </div>
+      <PhotoContainerComponent :photo="photos ? photos[0] : null" />
+    </div>
 
-      <PhotoContentBlockComponent
-        :photo="photos ? photos[1] : null"
-        reversed
-      >
-        <h3 class="home-page__subtitle">
+    <!-- SECOND BLOCK -->
+    <div class="home-page__block home-page__block--reversed df df-jcsb">
+      <div class="home-page__block-content">
+        <h3 class="home-page__block-subtitle">
           Lorem ipsum dolor sit amet
         </h3>
 
-        <p class="home-page__text">
+        <p class="home-page__block-text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum culpa, inventore minima officiis cum quod, nobis error, quia cumque aut impedit dignissimos. Praesentium, delectus! Atque, nostrum. Porro, minus dolores? Asperiores officiis officia, exercitationem quasi neque vero! Ipsa placeat ipsum quis enim alias ad a libero, porro quasi iure?
         </p>
         <br>
-        <p class="home-page__text">
+        <p class="home-page__block-text">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, ratione, amet nesciunt reiciendis magnam soluta tempora veritatis nobis doloremque fuga aperiam, quis adipisci iure placeat?
         </p>
         <br>
-        <p class="home-page__text home-page__text--last">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, facilis? Neque, dolorem tenetur? Consequuntur eligendi est dolores aliquid ipsum libero. Repudiandae, explicabo asperiores.</p>
-      </PhotoContentBlockComponent>
+        <p class="home-page__block-text home-page__block-text--last">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, facilis? Neque, dolorem tenetur? Consequuntur eligendi est dolores aliquid ipsum libero. Repudiandae, explicabo asperiores.
+        </p>
+      </div>
+      <PhotoContainerComponent :photo="photos ? photos[1] : null" />
+    </div>
 
-      <PhotoContentBlockComponent
-        :photo="photos ? photos[2] : null"
-      >
-        <h3 class="home-page__subtitle">
+    <!-- THIRD BLOCK -->
+    <div class="home-page__block df df-jcsb">
+      <div class="home-page__block-content">
+        <h3 class="home-page__block-subtitle">
           Lorem ipsum!
         </h3>
 
-        <p class="home-page__text">
+        <p class="home-page__block-text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum culpa, inventore minima officiis cum quod, nobis error, quia cumque aut impedit dignissimos. Praesentium, delectus!
         </p>
         <br>
-        <p class="home-page__text">
+        <p class="home-page__block-text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aperiam facere? Dignissimos adipisci voluptatum velit mollitia, enim dolorem aliquid quisquam rerum eum. Iste, accusantium animi impedit alias vero ut corporis omnis qui ab placeat fugiat nulla hic voluptate cupiditate voluptatibus iusto a id vitae iure.
         </p>
         <br>
-        <p class="home-page__text home-page__text--last">Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
+        <p class="home-page__block-text home-page__block-text--last">Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
 
         <RouterLink :to="{ name: 'GalleryPage' }">
           <MyButton severity="secondary">
             {{ $t('homePage.goToAdventure') }}
           </MyButton>
         </RouterLink>
-      </PhotoContentBlockComponent>
+      </div>
+      <PhotoContainerComponent :photo="photos ? photos[2] : null" />
     </div>
   </div>
 </template>
@@ -66,7 +71,7 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
 
-  import PhotoContentBlockComponent from '@/components/shared/PhotoContentBlockComponent.vue';
+  import PhotoContainerComponent from '@/components/shared/PhotoContainerComponent.vue';
 
   import { usePhotosApi } from '@/api/photos.api';
 
@@ -93,16 +98,40 @@
 
 <style scoped lang="scss">
   .home-page {
-    &__blocks-container {
+    gap: 120px;
+
+    @include tablet {
+      gap: 50px;
+    }
+
+    &__block {
       max-width: 960px;
-      gap: 120px;
+      align-items: stretch;
+      gap: 20px;
+
+      &--reversed {
+        flex-flow: row-reverse;
+      }
 
       @include tablet {
-        gap: 50px;
+        flex-direction: column;
+        gap: 24px;
+        flex-flow: column-reverse;
+        align-items: center;
       }
     }
 
-    &__title {
+    &__block-content {
+      max-width: 50%;
+      flex-grow: 1;
+
+      @include tablet {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    &__block-title {
       font-size: 60px;
       line-height: 78px;
       text-transform: capitalize;
@@ -115,7 +144,7 @@
       }
     }
 
-    &__subtitle {
+    &__block-subtitle {
       color: $green-900;
       font-size: 36px;
       line-height: 40px;
@@ -129,7 +158,7 @@
       }
     }
 
-    &__text {
+    &__block-text {
       &--last {
         margin-bottom: 40px;
 

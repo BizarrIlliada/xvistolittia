@@ -5,6 +5,12 @@
   </div>
 </template>
 
+<script setup lang="ts">
+  defineOptions({
+    name: 'MyLoader',
+  });
+</script>
+
 <style scoped lang="scss">
   @import '@/assets/styles/utils/_animations.scss';
 
