@@ -8,24 +8,10 @@
 
   &__side-tag {
     position: absolute;
-    left: -140px;
-    top: 75px;
-    transform: rotateZ(-90deg);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    div {
-      width: 90px;
-      height: 1px;
-      background-color: $green-primary;
-    }
-
-    span {
-      color: $green-primary;
-      font-size: 14px;
-      line-height: 18.2px;
-    }
+    top: 8px;
+    left: -80px;
+    transform: rotateZ(-90deg) translateX(-100%);
+    transform-origin: top left;
 
     @include phone {
       display: none;

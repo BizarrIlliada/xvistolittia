@@ -1,7 +1,7 @@
 <template>
   <div class="gallery-page">
     <TabsComponent :tabs="tabs" :selectedTab="selectedTab" @onTabSelect="changeTab($event)">
-      <PhotoContentBlockComponent :photo="exampleTabImage ?? null"></PhotoContentBlockComponent>
+      <PhotoContainerComponent :photo="exampleTabImage ?? null" />
     </TabsComponent>
 
     <PhotoInputComponent
@@ -20,7 +20,7 @@
 
   import PhotoInputComponent from '@/components/shared/PhotoInputComponent.vue';
   import TabsComponent from '@/components/shared/TabsComponent.vue';
-  import PhotoContentBlockComponent from '@/components/shared/PhotoContentBlockComponent.vue';
+  import PhotoContainerComponent from '@/components/shared/PhotoContainerComponent.vue';
 
   import { type IPhoto, type TPhotoCategory } from '@/types';
 
