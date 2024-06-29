@@ -1,6 +1,9 @@
 export function useHelpers() {
   function generateUrl(path: string) {
-    return new URL(path.replace('@', '/src'), import.meta.url).href;
+    const url = new URL(path.replace('@', '/src'), import.meta.url).href
+    console.log(url);
+
+    return url;
   }
 
   return {
