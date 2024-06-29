@@ -1,14 +1,8 @@
 <template>
   <div class="gallery-page">
     <TabsComponent :tabs="tabs" :selectedTab="selectedTab" @onTabSelect="changeTab($event)">
-      <PhotoContainerComponent :photo="exampleTabImage ?? null" />
+      <component :is="currentTabComponent" v-bind="currentTabProps" @onPhotoAdded="loadPhotos('camp')"></component>
     </TabsComponent>
-
-    <PhotoInputComponent
-      v-if="authStore.user"
-      collectionName="general"
-      @onPhotoAdded="loadPhotos('general')"
-    ></PhotoInputComponent>
   </div>
 </template>
 
@@ -18,33 +12,45 @@
 
   import { computed, onMounted, ref } from 'vue';
 
+  import GalleryComponent from './GalleryComponent.vue';
   import PhotoInputComponent from '@/components/shared/PhotoInputComponent.vue';
   import TabsComponent from '@/components/shared/TabsComponent.vue';
-  import PhotoContainerComponent from '@/components/shared/PhotoContainerComponent.vue';
 
   import { type IPhoto, type TPhotoCategory } from '@/types';
 
   import { useAuthStore } from '@/stores/authStore';
-
   import { usePhotosApi } from '@/api/photos.api';
 
   const authStore = useAuthStore();
   const { fetchPhotosByCategory } = usePhotosApi();
 
-  const tabs = [
-    'Camp',
-    'Summer',
-    'Winter',
-    'Fall',
-    'Spring',
-  ];
+  const tabs = computed(() => authStore.user ? [ 'Camp', 'Add photo' ] : ['Camp']);
   const selectedTab = ref('Camp');
+
+  const currentTabComponent = computed(() => {
+    if (selectedTab.value === 'Camp') {
+      return GalleryComponent;
+    } else {
+      return PhotoInputComponent;
+    }
+  });
+  const currentTabProps = computed(() => {
+    if (selectedTab.value === 'Camp') {
+      return {
+        photos: photos.value as IPhoto[],
+      };
+    } else {
+      return {
+        collectionName: 'camp' as TPhotoCategory,
+      };
+    }
+  });
 
   function changeTab(tabName: string) {
     selectedTab.value = tabName;
   }
 
-  const photos = ref<IPhoto[] | null>(null);
+  const photos = ref<IPhoto[]>([]);
 
   async function loadPhotos(categoryName: TPhotoCategory) {
     try {
@@ -55,31 +61,8 @@
     }
   }
 
-  const exampleTabImage = computed(() => {
-    if (photos.value?.length) {
-      switch (selectedTab.value) {
-        case 'Camp':
-          return photos.value[0];
-        case 'Summer':
-          return photos.value[1];
-        case 'Winter':
-          return photos.value[2];
-        case 'Fall':
-          return photos.value[3];
-        case 'Spring':
-          return photos.value[4];
-
-        default:
-          break;
-      }
-      return photos.value[0];
-    }
-
-    return null;
-  });
-
   onMounted(() => {
-    loadPhotos('general');
+    loadPhotos('camp');
   });
 </script>
 

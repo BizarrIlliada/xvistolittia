@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/gallery',
       name: 'GalleryPage',
-      component: () => import('@/pages/GalleryPage.vue'),
+      component: () => import('@/pages/gallery/GalleryPage.vue'),
       meta: {
         translationKey: 'gallery',
       },
