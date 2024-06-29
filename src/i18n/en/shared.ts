@@ -7,7 +7,7 @@ export default {
     tabName: "{title} {'|'} XVIStolittia",
     home: 'Home',
     gallery: 'Gallery',
-    aboutUs: 'About Us',
+    info: 'Info',
     notFound: 'Not Found',
     auth: 'Authorization',
   },

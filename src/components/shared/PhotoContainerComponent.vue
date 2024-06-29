@@ -32,14 +32,10 @@
 <style scoped lang="scss">
   .photo-container {
     position: relative;
-    min-height: 300px;
+    min-height: 150px;
     height: min-content;
     width: 100%;
     box-shadow: $app-shadow;
-
-    @include tablet {
-      min-height: 200px;
-    }
 
     &__photo {
       display: block;
