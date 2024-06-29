@@ -14,10 +14,10 @@
       </div>
       <div class="about-page__block-content df">
         <a href="https://t.me/illiada_bo" target="_blank" class="app-footer__contact df">
-          <PhotoContainerComponent :photo="{ url: firstExamplePhoto, name: 'QR Telegram' }" />
+          <PhotoContainerComponent :photo="{ url: telegramQrImage, name: 'QR Telegram' }" />
         </a>
         <a href="https://www.instagram.com/xvistolittia/" target="_blank" class="app-footer__contact df">
-          <PhotoContainerComponent :photo="{ url: secondExamplePhoto, name: 'QR Instagram' }" />
+          <PhotoContainerComponent :photo="{ url: instagramQrImage, name: 'QR Instagram' }" />
         </a>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="about-page__block df df--col">
       <MySideTag class="about-page__block-side-tag" text="how to find us" />
       <div class="about-page__block-content about-page__block-content--reverse df">
-        <span v-html="$t('aboutPage.villageDescription')" class="about-page__block-text"></span>
+        <span v-html="$t('aboutPage.villageDescription').replace('\n', '<br>')" class="about-page__block-text"></span>
         <span class="about-page__block-text about-page__block-text--primary">
           {{ $t('aboutPage.youAreAlwaysWelcome') }}
         </span>
@@ -41,12 +41,8 @@
   import PhotoContainerComponent from '@/components/shared/PhotoContainerComponent.vue';
   import GoogleMapComponent from '@/components/shared/GoogleMapComponent.vue';
 
-  import { useHelpers } from '@/tools/hooks/helpers';
-
-  const { generateUrl } = useHelpers();
-
-  const firstExamplePhoto = generateUrl('@/assets/images/qr_tg.webp');
-  const secondExamplePhoto = generateUrl('@/assets/images/qr_inst.webp');
+  import telegramQrImage from '@/assets/images/qr_tg.webp';
+  import instagramQrImage from '@/assets/images/qr_inst.webp';
 </script>
 
 <style scoped lang="scss">
