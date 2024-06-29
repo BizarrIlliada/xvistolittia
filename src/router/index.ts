@@ -23,11 +23,11 @@ const router = createRouter({
       },
     },
     {
-      path: '/about',
-      name: 'AboutPage',
-      component: () => import('@/pages/AboutPage.vue'),
+      path: '/info',
+      name: 'InfoPage',
+      component: () => import('@/pages/InfoPage.vue'),
       meta: {
-        translationKey: 'aboutUs',
+        translationKey: 'info',
       },
     },
     {

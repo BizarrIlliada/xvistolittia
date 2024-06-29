@@ -36,8 +36,8 @@
       label: 'shared.tabs.gallery',
     },
     {
-      to: { name: 'AboutPage' },
-      label: 'shared.tabs.aboutUs',
+      to: { name: 'InfoPage' },
+      label: 'shared.tabs.info',
     },
   ];
 
