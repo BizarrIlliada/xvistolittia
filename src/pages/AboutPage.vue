@@ -13,8 +13,12 @@
         </span>
       </div>
       <div class="about-page__block-content df">
-        <PhotoContainerComponent :photo="{ url: secondExamplePhoto, name: 'QR Instagram' }" />
-        <PhotoContainerComponent :photo="{ url: firstExamplePhoto, name: 'QR Telegram' }" />
+        <a href="https://t.me/illiada_bo" target="_blank" class="app-footer__contact df">
+          <PhotoContainerComponent :photo="{ url: firstExamplePhoto, name: 'QR Telegram' }" />
+        </a>
+        <a href="https://www.instagram.com/xvistolittia/" target="_blank" class="app-footer__contact df">
+          <PhotoContainerComponent :photo="{ url: secondExamplePhoto, name: 'QR Instagram' }" />
+        </a>
       </div>
     </div>
 

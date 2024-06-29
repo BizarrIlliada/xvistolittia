@@ -32,7 +32,7 @@
 <style scoped lang="scss">
   .photo-container {
     position: relative;
-    min-height: 400px;
+    min-height: 300px;
     height: min-content;
     width: 100%;
     box-shadow: $app-shadow;
