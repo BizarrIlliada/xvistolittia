@@ -15,7 +15,7 @@
           <MyButton>{{ $t('homePage.moreAboutUs') }}</MyButton>
         </RouterLink>
       </div>
-      <PhotoContainerComponent :photo="photos ? photos[0] : null" class="home-page__photo" />
+      <PhotoContainerComponent :photo="photos ? photos[0] : null" />
     </div>
 
     <!-- SECOND BLOCK -->

@@ -1,5 +1,5 @@
 import { getDownloadURL, ref as storageRef, uploadBytes } from 'firebase/storage';
-import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, addDoc, orderBy } from 'firebase/firestore';
 import { fireStore, fireStorage } from '@/firebase';
 
 import { type IPhoto, type TPhotoCategory } from '@/types';
@@ -12,6 +12,7 @@ export function usePhotosApi() {
       const q = query(
         collection(fireStore, 'photos'),
         where('category', '==', categoryName),
+        orderBy('createdAt', 'desc'),
       );
   
       const querySnapshot = await getDocs(q);

@@ -1,6 +1,7 @@
 <template>
   <div class="info-page df df--col">
     <div class="info-page__block df df--col">
+      <MySideTag class="info-page__block-side-tag" text="about us" />
       <h2 class="info-page__title">
         {{ $t('infoPage.whoWeAre') }}
       </h2>
@@ -18,7 +19,7 @@
     </div>
 
     <div class="info-page__block df df--col">
-      <MySideTag class="info-page__block-side-tag" text="contact us" />
+      <MySideTag class="info-page__block-side-tag" text="contacts" />
       <div class="info-page__block-content df">
         <span class="info-page__block-title">
           {{ $t('infoPage.letsBeInTouch') }}
@@ -59,7 +60,7 @@
     <div class="info-page__block df df--col">
       <MySideTag class="info-page__block-side-tag" text="find us" />
       <div class="info-page__block-content info-page__block-content--reverse df">
-        <span v-html="$t('infoPage.villageDescription').replace('\n', '<br>')" class="info-page__block-text"></span>
+        <span v-html="$t('infoPage.villageDescription').replace('\n', '<br><br>')" class="info-page__block-text"></span>
         <span class="info-page__block-title">
           {{ $t('infoPage.youAreAlwaysWelcome') }}
         </span>
