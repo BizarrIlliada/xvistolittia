@@ -16,15 +16,15 @@
   import PhotoInputComponent from '@/components/shared/PhotoInputComponent.vue';
   import TabsComponent from '@/components/shared/TabsComponent.vue';
 
-  import { type IPhoto, type TPhotoCategory } from '@/types';
+  import { type IPhoto, type TPhotoAlbumName } from '@/types';
 
   import { useAuthStore } from '@/stores/authStore';
   import { usePhotosApi } from '@/api/photos.api';
 
   const authStore = useAuthStore();
-  const { fetchPhotosByCategory } = usePhotosApi();
+  const { fetchAlbumByName } = usePhotosApi();
 
-  const tabs = computed(() => authStore.user ? [ 'Camp', 'Add photo' ] : ['Camp']);
+  const tabs = computed(() => authStore.user ? ['Camp', 'Add photo'] : ['Camp']);
   const selectedTab = ref('Camp');
 
   const currentTabComponent = computed(() => {
@@ -41,7 +41,7 @@
       };
     } else {
       return {
-        collectionName: 'camp' as TPhotoCategory,
+        albumName: 'camp' as TPhotoAlbumName,
       };
     }
   });
@@ -52,9 +52,11 @@
 
   const photos = ref<IPhoto[]>([]);
 
-  async function loadPhotos(categoryName: TPhotoCategory) {
+  async function loadPhotos(categoryName: TPhotoAlbumName) {
     try {
-      photos.value = await fetchPhotosByCategory(categoryName);
+      photos.value = await fetchAlbumByName(categoryName);
+      console.log(photos.value);
+
     } catch (error) {
       //TODO: add alert
       console.log(error);
@@ -67,7 +69,5 @@
 </script>
 
 <style scoped lang="scss">
-  .gallery-page {
-
-  }
+  .gallery-page {}
 </style>

@@ -26,15 +26,20 @@
         </h3>
 
         <p class="home-page__block-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum culpa, inventore minima officiis cum quod, nobis error, quia cumque aut impedit dignissimos. Praesentium, delectus! Atque, nostrum. Porro, minus dolores? Asperiores officiis officia, exercitationem quasi neque vero! Ipsa placeat ipsum quis enim alias ad a libero, porro quasi iure?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum culpa, inventore minima officiis cum quod,
+          nobis error, quia cumque aut impedit dignissimos. Praesentium, delectus! Atque, nostrum. Porro, minus dolores?
+          Asperiores officiis officia, exercitationem quasi neque vero! Ipsa placeat ipsum quis enim alias ad a libero,
+          porro quasi iure?
         </p>
         <br>
         <p class="home-page__block-text">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, ratione, amet nesciunt reiciendis magnam soluta tempora veritatis nobis doloremque fuga aperiam, quis adipisci iure placeat?
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque, ratione, amet nesciunt reiciendis magnam
+          soluta tempora veritatis nobis doloremque fuga aperiam, quis adipisci iure placeat?
         </p>
         <br>
         <p class="home-page__block-text home-page__block-text--last">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, facilis? Neque, dolorem tenetur? Consequuntur eligendi est dolores aliquid ipsum libero. Repudiandae, explicabo asperiores.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit, facilis? Neque, dolorem tenetur? Consequuntur
+          eligendi est dolores aliquid ipsum libero. Repudiandae, explicabo asperiores.
         </p>
       </div>
       <PhotoContainerComponent :photo="photos ? photos[1] : null" />
@@ -48,14 +53,18 @@
         </h3>
 
         <p class="home-page__block-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum culpa, inventore minima officiis cum quod, nobis error, quia cumque aut impedit dignissimos. Praesentium, delectus!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum culpa, inventore minima officiis cum quod,
+          nobis error, quia cumque aut impedit dignissimos. Praesentium, delectus!
         </p>
         <br>
         <p class="home-page__block-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aperiam facere? Dignissimos adipisci voluptatum velit mollitia, enim dolorem aliquid quisquam rerum eum. Iste, accusantium animi impedit alias vero ut corporis omnis qui ab placeat fugiat nulla hic voluptate cupiditate voluptatibus iusto a id vitae iure.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, aperiam facere? Dignissimos adipisci
+          voluptatum velit mollitia, enim dolorem aliquid quisquam rerum eum. Iste, accusantium animi impedit alias vero
+          ut corporis omnis qui ab placeat fugiat nulla hic voluptate cupiditate voluptatibus iusto a id vitae iure.
         </p>
         <br>
-        <p class="home-page__block-text home-page__block-text--last">Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
+        <p class="home-page__block-text home-page__block-text--last">Lorem ipsum, dolor sit amet consectetur adipisicing
+          elit</p>
 
         <RouterLink :to="{ name: 'GalleryPage' }">
           <MyButton severity="secondary">
@@ -77,13 +86,13 @@
 
   import type { IPhoto } from '@/types';
 
-  const { fetchPhotosByCategory } = usePhotosApi();
+  const { fetchAlbumByName } = usePhotosApi();
 
   const photos = ref<IPhoto[] | null>(null);
 
   async function loadPhotos() {
     try {
-      photos.value = await fetchPhotosByCategory('home');
+      photos.value = await fetchAlbumByName('home');
 
       console.log(photos.value);
     } catch (error) {

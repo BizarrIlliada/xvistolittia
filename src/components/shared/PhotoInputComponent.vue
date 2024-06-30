@@ -1,23 +1,13 @@
 <template>
   <div class="photo-input df df--col df--aic">
     <div class="photo-input__body df df--aic df--jcc" @click="uploadPhotoInput?.click()">
-      <i
-        class="pi photo-input__icon"
-        :class="{
-          'pi-upload': !isUploading,
-          'pi-spinner-dotted': isUploading,
-          'photo-input__icon--loader': isUploading,
-        }"
-      ></i>
-      <input
-        id="upload-photo-input"
-        type="file"
-        accept="image/*"
-        class="photo-input__input"
-        ref="uploadPhotoInput"
-        :disabled="isUploading"
-        @change.prevent="handleUploadPhoto"
-      />
+      <i class="pi photo-input__icon" :class="{
+      'pi-upload': !isUploading,
+      'pi-spinner-dotted': isUploading,
+      'photo-input__icon--loader': isUploading,
+    }"></i>
+      <input id="upload-photo-input" type="file" accept="image/*" class="photo-input__input" ref="uploadPhotoInput"
+        :disabled="isUploading" @change.prevent="handleUploadPhoto" />
     </div>
 
     <label for="upload-photo-input" class="photo-input__label">
@@ -31,16 +21,16 @@
 
   import { usePhotosApi } from '@/api/photos.api';
 
-  import { type TPhotoCategory } from '@/types';
+  import { type TPhotoAlbumName } from '@/types';
 
-  const { uploadPhoto } = usePhotosApi();
+  const { uploadPhotoToAlbum } = usePhotosApi();
 
   interface Props {
-    collectionName?: TPhotoCategory;
+    albumName?: TPhotoAlbumName;
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    collectionName: 'general',
+    albumName: 'general',
   });
 
   const emits = defineEmits(['onPhotoAdded']);
@@ -51,6 +41,9 @@
   async function handleUploadPhoto(event: Event) {
     const target = event.target as HTMLInputElement;
     const photo = target.files?.[0];
+
+    console.log('Photo: ', photo);
+
     if (!photo) {
       return;
     }
@@ -58,7 +51,7 @@
     isUploading.value = true;
 
     try {
-      await uploadPhoto(photo, props.collectionName);
+      await uploadPhotoToAlbum(photo, props.albumName);
       emits('onPhotoAdded');
     } catch (error) {
       //TODO: add alert
