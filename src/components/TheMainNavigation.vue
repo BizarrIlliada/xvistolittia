@@ -26,15 +26,15 @@
   const router = useRouter();
   const authStore = useAuthStore();
 
-  const navLinks = [
+  const navLinks: { to: { name: string }, label: string }[] = [
     {
       to: { name: 'HomePage' },
       label: 'shared.tabs.home',
     },
-    {
+    ...(import.meta.env.VITE_IS_GALLERY_PAGE_HIDDEN === 'true' ? [{
       to: { name: 'GalleryPage' },
       label: 'shared.tabs.gallery',
-    },
+    }] : []),
     {
       to: { name: 'InfoPage' },
       label: 'shared.tabs.info',
