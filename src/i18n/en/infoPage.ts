@@ -1,7 +1,8 @@
 export default {
-  whoWeAre: 'Хто ж такі XVI Stolittia? EN',
-  villageDescription: 'Ми знаходимось у невеликому селі Шоломинь, що розташоване неподалік від Львова. Лише 15 хвилин їзди від міста — і ви вже дихаєте свіжим повітрям біля лісу, знайомитесь із милими жителями нашої стайні та милуєтесь заходом сонця сидячи верхи на коні.\n Доїхати до нас насправді легко як власним автомобілем, так і автобусом, адже наше господарство знаходиться неподалік від траси. Скориставшись картою нижче, ви можете обрати найшвидчий для себе маршрут. EN',
-  youAreAlwaysWelcome: 'Наші двері завжди відчинені для гостей! Ми щасливі приймати в себе кожного — від малого, до великого! EN',
-  letsBeInTouch: 'Телефонуйте, або пишіть нам в наших соціальних мережах EN',
-  ourContacts: 'Наші контакти: EN',
+  whoWeAreTitle: 'Who are the XVI Stolittia?',
+  whoWeAre: 'At XVI Stolittia, our family is committed to providing unforgettable experiences in the heart of Sholomyn. Our farm is a sanctuary where both horses and guests can enjoy the beauty of nature and the thrill of adventure.\n We offer a range of activities, including horseback rides through scenic fields, forests, and lakeside trails. In the summer, our farm hosts camps and small corporate events, perfect for team-building and relaxation. Our partnership with the nearby Banya allows guests to unwind in a soothing sauna after a day of riding, ensuring complete relaxation.\n Photography enthusiasts will love the stunning sunsets at XVI Stolittia, offering the perfect backdrop for professional photo shoots.\n Whether you\'re here for the ride, the scenery, or the warm, family-friendly atmosphere, XVI Stolittia invites you to create cherished memories with us.',
+
+  villageDescription: 'We are located in the small village of Sholomyn, not far from Lviv. Just a 15 minute drive from the city — and you’re already breathing in the fresh forest air, getting to know all the lovely residents of out stables, and admiring the sunset while sitting on a horse. \n It is very easy to get to us both by car and by bus, because our farm is located not far from the highway. With the use of the map below, you can choose the fastest route for you.',
+  youAreAlwaysWelcome: 'Our doors are always open! We are delighted to welcome everyone — from children to adults!',
+  letsBeInTouch: 'Feel free to call us or reach out to us on our social media',
 }

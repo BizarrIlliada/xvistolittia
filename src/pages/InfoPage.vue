@@ -3,17 +3,9 @@
     <div class="info-page__block df df--col">
       <MySideTag class="info-page__block-side-tag" text="about us" />
       <h2 class="info-page__title">
-        {{ $t('infoPage.whoWeAre') }}
+        {{ $t('infoPage.whoWeAreTitle') }}
       </h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cumque quam doloribus fugit et numquam minus, ut commodi natus accusamus ab dolores a, nobis odit nisi recusandae officia? Nostrum consequatur tenetur impedit numquam qui eaque blanditiis. Sint consequuntur molestias praesentium?
-        <br>
-        <br>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta nostrum nam necessitatibus nemo ipsa enim et. Asperiores eligendi quo, aliquid sed repellat tenetur incidunt doloribus ratione perferendis exercitationem, officiis repellendus. Culpa veritatis ea, perferendis architecto nulla nemo amet hic reiciendis sed? Saepe asperiores dolore quia. Assumenda, harum modi quo eaque architecto, cum asperiores magni blanditiis ipsum eius enim ea tenetur hic reiciendis eveniet est neque adipisci consequatur similique iste! Natus, beatae corrupti laudantium voluptatum qui molestias facere nisi perferendis dolorem eveniet dolor. Doloremque, alias quisquam?
-        <br>
-        <br>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt rerum nostrum nihil doloremque deleniti inventore nisi recusandae officiis ipsam ipsum ut labore, amet nemo eaque quam commodi. Modi, cupiditate quibusdam!
-      </p>
+      <p v-html="$t('infoPage.whoWeAre').replace(/\n/g, '<br><br>')"></p>
 
       <PhotoContainerComponent :photo="{ url: sirko, name: 'Sirko' }" />
     </div>
@@ -60,7 +52,7 @@
     <div class="info-page__block df df--col">
       <MySideTag class="info-page__block-side-tag" text="find us" />
       <div class="info-page__block-content info-page__block-content--reverse df">
-        <span v-html="$t('infoPage.villageDescription').replace('\n', '<br><br>')" class="info-page__block-text"></span>
+        <span v-html="$t('infoPage.villageDescription').replace(/\n/g, '<br><br>')" class="info-page__block-text"></span>
         <span class="info-page__block-title">
           {{ $t('infoPage.youAreAlwaysWelcome') }}
         </span>

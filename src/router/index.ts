@@ -14,14 +14,14 @@ const router = createRouter({
         translationKey: 'home',
       },
     },
-    {
+    ...(import.meta.env.VITE_IS_GALLERY_PAGE_HIDDEN === 'true' ? [{
       path: '/gallery',
       name: 'GalleryPage',
       component: () => import('@/pages/gallery/GalleryPage.vue'),
       meta: {
         translationKey: 'gallery',
       },
-    },
+    }] : []),
     {
       path: '/info',
       name: 'InfoPage',

@@ -55,8 +55,6 @@
   async function loadPhotos(categoryName: TPhotoAlbumName) {
     try {
       photos.value = await fetchAlbumByName(categoryName);
-      console.log(photos.value);
-
     } catch (error) {
       //TODO: add alert
       console.log(error);
