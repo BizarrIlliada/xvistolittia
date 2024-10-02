@@ -21,16 +21,16 @@
 
   import { usePhotosApi } from '@/api/photos.api';
 
-  import { type TPhotoAlbumName } from '@/types';
+  import { EPhotoAlbumName } from '@/types';
 
   const { uploadPhotoToAlbum } = usePhotosApi();
 
   interface Props {
-    albumName?: TPhotoAlbumName;
+    albumName?: EPhotoAlbumName;
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    albumName: 'general',
+    albumName: EPhotoAlbumName.GENERAL,
   });
 
   const emits = defineEmits(['onPhotoAdded']);

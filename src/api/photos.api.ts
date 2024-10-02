@@ -2,12 +2,12 @@ import { getDownloadURL, ref as storageRef, uploadBytes } from 'firebase/storage
 import { collection, query, getDocs, addDoc, orderBy } from 'firebase/firestore';
 import { fireStore, fireStorage } from '@/firebase';
 
-import { type IPhoto, type TPhotoAlbumName } from '@/types';
+import { type IPhoto, type EPhotoAlbumName } from '@/types';
 
 //TODO: add cashing
 
 export function usePhotosApi() {
-  async function fetchAlbumByName(albumName: TPhotoAlbumName): Promise<IPhoto[]> {
+  async function fetchAlbumByName(albumName: EPhotoAlbumName): Promise<IPhoto[]> {
     try {
       const albumRef = collection(fireStore, 'photos', albumName, 'images');
       const q = query(albumRef, orderBy('createdAt', 'desc'));

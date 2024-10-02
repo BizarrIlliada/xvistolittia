@@ -5,13 +5,20 @@
       :key="photo.url"
       :photo="photo"
       class="gallery__photo"
+      @click="setSelectedPhoto(photo)"
+    />
+
+    <PhotoViewComponent
+      :photo="selectedPhoto"
+      @onPhotoClose="setSelectedPhoto"
     />
   </div>
 </template>
 
 <script setup lang="ts">
   import PhotoContainerComponent from '@/components/shared/PhotoContainerComponent.vue';
-
+  import PhotoViewComponent from '@/components/shared/PhotoViewComponent.vue';
+  import { ref } from 'vue';
   import type { IPhoto } from '@/types';
 
   interface Props {
@@ -19,6 +26,12 @@
   }
 
   defineProps<Props>();
+
+  const selectedPhoto = ref<IPhoto | null>(null);
+
+  function setSelectedPhoto(photo: IPhoto | undefined) {
+    photo ? selectedPhoto.value = photo : selectedPhoto.value = null;
+  }
 </script>
 
 <style scoped lang="scss">
@@ -30,6 +43,7 @@
     &__photo {
       height: 100%;
       max-height: 400px;
+      cursor: pointer;
 
       &--hor {
         grid-column: span 2;
