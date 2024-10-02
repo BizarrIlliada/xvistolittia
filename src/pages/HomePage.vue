@@ -58,7 +58,7 @@
 
   import { usePhotosApi } from '@/api/photos.api';
 
-  import type { IPhoto } from '@/types';
+  import { EPhotoAlbumName, type IPhoto } from '@/types';
 
   const { fetchAlbumByName } = usePhotosApi();
 
@@ -66,7 +66,7 @@
 
   async function loadPhotos() {
     try {
-      photos.value = await fetchAlbumByName('home');
+      photos.value = await fetchAlbumByName(EPhotoAlbumName.HOME);
     } catch (error) {
       error;
     }

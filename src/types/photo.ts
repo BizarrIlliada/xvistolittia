@@ -1,4 +1,8 @@
-export type TPhotoAlbumName = 'general' | 'home' | 'camp';
+export enum EPhotoAlbumName {
+  GENERAL = 'general',
+  HOME = 'home',
+  CAMP = 'camp',
+}
 
 export interface IPhoto {
   url: string;
