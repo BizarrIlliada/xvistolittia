@@ -55,13 +55,6 @@ const router = createRouter({
       },
     },
   ],
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
-  },
 });
 
 const { t } = i18n.global;

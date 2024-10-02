@@ -1,7 +1,7 @@
 <template>
   <div class="gallery-page">
     <TabsComponent :tabs="tabs" :selectedTab="selectedTab" @onTabSelect="changeTab($event)">
-      <component :is="currentTabComponent" v-bind="currentTabProps" @onPhotoAdded="loadPhotos(EPhotoAlbumName.CAMP)"></component>
+      <component :is="currentTabComponent" v-bind="currentTabProps" @onPhotoAdded="loadPhotos('camp')"></component>
     </TabsComponent>
   </div>
 </template>
@@ -16,7 +16,7 @@
   import PhotoInputComponent from '@/components/shared/PhotoInputComponent.vue';
   import TabsComponent from '@/components/shared/TabsComponent.vue';
 
-  import { EPhotoAlbumName, type IPhoto } from '@/types';
+  import { type IPhoto, type TPhotoAlbumName } from '@/types';
 
   import { useAuthStore } from '@/stores/authStore';
   import { usePhotosApi } from '@/api/photos.api';
@@ -41,7 +41,7 @@
       };
     } else {
       return {
-        albumName: EPhotoAlbumName.CAMP,
+        albumName: 'camp' as TPhotoAlbumName,
       };
     }
   });
@@ -52,7 +52,7 @@
 
   const photos = ref<IPhoto[]>([]);
 
-  async function loadPhotos(categoryName: EPhotoAlbumName) {
+  async function loadPhotos(categoryName: TPhotoAlbumName) {
     try {
       photos.value = await fetchAlbumByName(categoryName);
     } catch (error) {
@@ -62,7 +62,7 @@
   }
 
   onMounted(() => {
-    loadPhotos(EPhotoAlbumName.CAMP);
+    loadPhotos('camp');
   });
 </script>
 
