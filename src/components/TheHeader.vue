@@ -1,4 +1,6 @@
 <template>
+  <!-- TODO: hide overlay on swipe -->
+<!-- TODO: always hide on swipe down and show on swipe up -->
   <div class="app-header-wrapper">
     <header class="app-header df df--aic">
       <div class="app-header__container container df df--aic df--jcsb">

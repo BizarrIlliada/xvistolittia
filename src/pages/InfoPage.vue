@@ -7,7 +7,7 @@
       </h2>
       <p v-html="$t('infoPage.whoWeAre').replace(/\n/g, '<br><br>')"></p>
 
-      <PhotoContainerComponent :photo="{ url: sirko, name: 'Sirko' }" />
+      <PhotoContainerComponent v-parallax.abs="0.03" :photo="{ url: sirko, name: 'Horses' }" />
     </div>
 
     <div class="info-page__block df df--col">
@@ -25,9 +25,9 @@
               </a>
             </li>
             <li class="info-page__contacts-item">
-              <a href="https://t.me/illiada_bo" target="_blank" class="info-page__contacts-link df">
+              <a href="https://t.me/xvistolittia" target="_blank" class="info-page__contacts-link df">
                 <span class="pi pi-telegram"></span>
-                @illiada_bo
+                @xvistolittia
               </a>
             </li>
             <li class="info-page__contacts-item">
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="info-page__block-content df">
-        <a href="https://t.me/illiada_bo" target="_blank" class="info-page__contact df">
+        <a href="https://t.me/xvistolittia" target="_blank" class="info-page__contact df">
           <PhotoContainerComponent :photo="{ url: telegramQrImage, name: 'QR Telegram' }" />
         </a>
         <a href="https://www.instagram.com/xvistolittia/" target="_blank" class="info-page__contact df">
@@ -52,12 +52,13 @@
     <div class="info-page__block df df--col">
       <MySideTag class="info-page__block-side-tag" text="find us" />
       <div class="info-page__block-content info-page__block-content--reverse df">
-        <span v-html="$t('infoPage.villageDescription').replace(/\n/g, '<br><br>')" class="info-page__block-text"></span>
+        <span v-html="$t('infoPage.villageDescription').replace(/\n/g, '<br><br>')"
+          class="info-page__block-text"></span>
         <span class="info-page__block-title">
           {{ $t('infoPage.youAreAlwaysWelcome') }}
         </span>
       </div>
-      <div class="info-page__block-content df">
+      <div v-parallax.abs="0.03" class="info-page__block-content df">
         <GoogleMapComponent class="info-page__google-map" />
       </div>
     </div>
@@ -71,7 +72,7 @@
   import telegramQrImage from '@/assets/images/qr_tg.webp';
   import instagramQrImage from '@/assets/images/qr_inst.webp';
 
-  import sirko from '@/assets/images/mockup/IMG_6525.jpg';
+  import sirko from '@/assets/images/mockup/IMG_2308.webp';
 </script>
 
 <style scoped lang="scss">
@@ -131,7 +132,7 @@
         }
       }
 
-      & > * {
+      &>* {
         flex: 1;
       }
     }
