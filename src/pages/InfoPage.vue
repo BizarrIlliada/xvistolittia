@@ -39,7 +39,8 @@
           </ul>
         </div>
       </div>
-      <div class="info-page__block-content df">
+      <div v-parallax="-0.05" class="info-page__block-content df">
+        <!-- TODO: add parallax with different direction for each qr -->
         <a href="https://t.me/xvistolittia" target="_blank" class="info-page__contact df">
           <PhotoContainerComponent :photo="{ url: telegramQrImage, name: 'QR Telegram' }" />
         </a>
