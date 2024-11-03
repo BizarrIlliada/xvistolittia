@@ -1,7 +1,7 @@
 <template>
   <div class="home-page df df--col df--aic">
     <!-- FIRST BLOCK -->
-    <div class="home-page__block df df-jcsb">
+    <div v-parallax="0.04" class="home-page__block df df-jcsb">
       <div class="home-page__block-content">
         <h2 class="home-page__block-title">
           {{ $t('homePage.title') }}
@@ -19,7 +19,7 @@
     </div>
 
     <!-- SECOND BLOCK -->
-    <div class="home-page__block home-page__block--reversed df df-jcsb">
+    <div v-parallax="-0.02" class="home-page__block home-page__block--reversed df df-jcsb">
       <div class="home-page__block-content">
         <h3 class="home-page__block-subtitle">
           {{ $t('homePage.ourStoryTitle') }}
@@ -32,7 +32,7 @@
     </div>
 
     <!-- THIRD BLOCK -->
-    <div class="home-page__block df df-jcsb">
+    <div v-parallax="0.05" class="home-page__block df df-jcsb">
       <div class="home-page__block-content">
         <h3 class="home-page__block-subtitle">
           {{ $t('homePage.ourMissionTitle') }}
