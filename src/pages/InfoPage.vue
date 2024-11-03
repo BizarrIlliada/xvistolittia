@@ -7,7 +7,7 @@
       </h2>
       <p v-html="$t('infoPage.whoWeAre').replace(/\n/g, '<br><br>')"></p>
 
-      <PhotoContainerComponent v-parallax.abs="0.03" :photo="{ url: sirko, name: 'Horses' }" />
+      <PhotoContainerComponent v-parallax.absY="0.03" :photo="{ url: sirko, name: 'Horses' }" />
     </div>
 
     <div class="info-page__block df df--col">
@@ -59,7 +59,7 @@
           {{ $t('infoPage.youAreAlwaysWelcome') }}
         </span>
       </div>
-      <div v-parallax.abs="0.03" class="info-page__block-content df">
+      <div v-parallax="0.03" class="info-page__block-content df">
         <GoogleMapComponent class="info-page__google-map" />
       </div>
     </div>
