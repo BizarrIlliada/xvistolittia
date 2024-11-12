@@ -21,7 +21,7 @@ const router = createRouter({
         translationKey: 'home',
       },
     },
-    ...(import.meta.env.VITE_IS_GALLERY_PAGE_HIDDEN === 'true' ? [{
+    ...(import.meta.env.MODE === 'development' ? [{
       path: '/gallery',
       name: 'GalleryPage',
       component: () => import('@/pages/gallery/GalleryPage.vue'),

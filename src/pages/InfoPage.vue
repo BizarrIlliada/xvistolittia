@@ -7,7 +7,7 @@
       </h2>
       <p v-html="$t('infoPage.whoWeAre').replace(/\n/g, '<br><br>')"></p>
 
-      <PhotoContainerComponent v-parallax.absY="0.03" :photo="{ url: sirko, name: 'Horses' }" />
+      <PhotoContainerComponent v-parallax.absY="0.03" :photo="{ url: infoPageMainImageUrl, name: 'Horses' }" />
     </div>
 
     <div class="info-page__block df df--col">
@@ -73,7 +73,7 @@
   import telegramQrImage from '@/assets/images/qr_tg.webp';
   import instagramQrImage from '@/assets/images/qr_inst.webp';
 
-  import sirko from '@/assets/images/mockup/IMG_2308.webp';
+  import infoPageMainImageUrl from '@/assets/images/mockup/IMG_2308.webp';
 </script>
 
 <style scoped lang="scss">
